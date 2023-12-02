@@ -40,8 +40,23 @@ class AOC2023::CubeConundrumTest < Minitest::Test
     assert(@cc.game_possible?(games[4]))
   end
 
+  def test_game_power
+    games = @cc.parse_games(INPUT)
+
+    assert_equal(48, @cc.game_power(games[0]))
+    assert_equal(12, @cc.game_power(games[1]))
+    assert_equal(1560, @cc.game_power(games[2]))
+    assert_equal(630, @cc.game_power(games[3]))
+    assert_equal(36, @cc.game_power(games[4]))
+  end
+
   def test_part1
     @cc.setup(INPUT)
     assert_equal(8, @cc.part1)
+  end
+
+  def test_part2
+    @cc.setup(INPUT)
+    assert_equal(2286, @cc.part2)
   end
 end

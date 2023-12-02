@@ -24,12 +24,22 @@ module AOC2023
       sum
     end
 
+    def part2
+      @games.sum { |game| game_power(game) }
+    end
+
     def game_possible?(game, max_red = 12, max_green = 13, max_blue = 14)
       game.each do |set|
         return false if set[0] > max_red || set[1] > max_green || set[2] > max_blue
       end
 
       true
+    end
+
+    def game_power(game)
+      game.max_by { |r, _, _| r }[0] *
+        game.max_by { |_, g, _| g }[1] *
+        game.max_by { |_, _, b| b }[2]
     end
 
     def parse_games(input)
