@@ -23,10 +23,10 @@ class AOC2023::TrebuchetTest < Minitest::Test
   end
 
   def test_calibration_value
-    assert_equal(12, @tt.calbration_value('1abc2'))
-    assert_equal(38, @tt.calbration_value('pqr3stu8vwx'))
-    assert_equal(15, @tt.calbration_value('a1b2c3d4e5f'))
-    assert_equal(77, @tt.calbration_value('treb7uchet'))
+    assert_equal(12, @tt.calibration_value('1abc2'))
+    assert_equal(38, @tt.calibration_value('pqr3stu8vwx'))
+    assert_equal(15, @tt.calibration_value('a1b2c3d4e5f'))
+    assert_equal(77, @tt.calibration_value('treb7uchet'))
   end
 
   def test_part1

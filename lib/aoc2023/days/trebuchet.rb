@@ -17,10 +17,10 @@ module AOC2023
     end
 
     def part1
-      @calibration_doc.sum { |line| calbration_value(line) }
+      @calibration_doc.sum { |line| calibration_value(line) }
     end
 
-    def calbration_value(line)
+    def calibration_value(line)
       first = line.index(DIGIT)
       last = line.rindex(DIGIT)
 
