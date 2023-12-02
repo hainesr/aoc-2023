@@ -11,4 +11,4 @@ require 'aoc2023'
 # Require all the days' code.
 # This is a convenience for the `bin/console` script.
 dir = File.expand_path('days', __dir__)
-Dir.glob(File.join(dir, '*.rb'), &method(:require))
+Dir.glob(File.join(dir, '*.rb')) { |file| require(file) }
