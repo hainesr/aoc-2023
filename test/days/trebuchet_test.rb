@@ -17,9 +17,18 @@ class AOC2023::TrebuchetTest < Minitest::Test
     treb7uchet
   EOI
 
+  INPUT2 = <<~EOI
+    two1nine
+    eightwothree
+    abcone2threexyz
+    xtwone3four
+    4nineeightseven2
+    zoneight234
+    7pqrstsixteen
+  EOI
+
   def setup
     @tt = AOC2023::Trebuchet.new
-    @tt.setup(INPUT)
   end
 
   def test_calibration_value
@@ -29,7 +38,23 @@ class AOC2023::TrebuchetTest < Minitest::Test
     assert_equal(77, @tt.calibration_value('treb7uchet'))
   end
 
+  def test_parsed_calibration_value
+    assert_equal(29, @tt.parsed_calibration_value('two1nine'))
+    assert_equal(83, @tt.parsed_calibration_value('eightwothree'))
+    assert_equal(13, @tt.parsed_calibration_value('abcone2threexyz'))
+    assert_equal(24, @tt.parsed_calibration_value('xtwone3four'))
+    assert_equal(42, @tt.parsed_calibration_value('4nineeightseven2'))
+    assert_equal(14, @tt.parsed_calibration_value('zoneight234'))
+    assert_equal(76, @tt.parsed_calibration_value('7pqrstsixteen'))
+  end
+
   def test_part1
+    @tt.setup(INPUT)
     assert_equal(142, @tt.part1)
+  end
+
+  def test_part2
+    @tt.setup(INPUT2)
+    assert_equal(281, @tt.part2)
   end
 end
