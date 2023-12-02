@@ -50,11 +50,13 @@ class AOC2023::TrebuchetTest < Minitest::Test
 
   def test_part1
     @tt.setup(INPUT)
+
     assert_equal(142, @tt.part1)
   end
 
   def test_part2
     @tt.setup(INPUT2)
+
     assert_equal(281, @tt.part2)
   end
 end

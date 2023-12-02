@@ -52,11 +52,13 @@ class AOC2023::CubeConundrumTest < Minitest::Test
 
   def test_part1
     @cc.setup(INPUT)
+
     assert_equal(8, @cc.part1)
   end
 
   def test_part2
     @cc.setup(INPUT)
+
     assert_equal(2286, @cc.part2)
   end
 end

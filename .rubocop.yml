@@ -1,4 +1,6 @@
-require: rubocop-performance
+require:
+  - rubocop-minitest
+  - rubocop-performance
 
 AllCops:
   NewCops: enable
@@ -27,6 +29,9 @@ Metrics/ParameterLists:
   MaxOptionalParameters: 4
 
 Metrics/PerceivedComplexity:
+  Max: 10
+
+Minitest/MultipleAssertions:
   Max: 10
 
 # Can allow short heredoc delimiters in the tests.
