@@ -39,4 +39,10 @@ class AOC2023::GearRatiosTest < Minitest::Test
 
     assert_equal(4361, @gr.part1)
   end
+
+  def test_part2
+    @gr.setup(INPUT)
+
+    assert_equal(467_835, @gr.part2)
+  end
 end

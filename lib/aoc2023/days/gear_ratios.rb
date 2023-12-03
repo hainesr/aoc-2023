@@ -24,6 +24,18 @@ module AOC2023
       end.sum(&:value)
     end
 
+    def part2
+      gears = @symbols['*'].map do |coord|
+        @part_numbers.select { |part| part.border.include?(coord) }
+      end
+
+      gears.sum do |parts|
+        next 0 unless parts.length == 2
+
+        parts[0].value * parts[1].value
+      end
+    end
+
     def read_input(input)
       symbols = {}
       part_numbers = []
