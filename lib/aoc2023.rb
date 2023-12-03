@@ -17,7 +17,8 @@ module AOC2023
   DAY_MAP = [
     nil, # There is no day zero!
     'trebuchet',
-    'cube_conundrum'
+    'cube_conundrum',
+    'gear_ratios'
   ].freeze
 
   def self.class_from_day(day)
