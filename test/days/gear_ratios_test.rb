@@ -34,6 +34,26 @@ class AOC2023::GearRatiosTest < Minitest::Test
     assert_equal(467, part_numbers[0].value)
   end
 
+  def test_partnumber
+    part = AOC2023::GearRatios::PartNumber.new(4, 0, 0)
+    part.add_value(6)
+    part.add_value(7)
+    part.finish
+
+    assert_equal(467, part.value)
+    assert_equal('<value: 467; length: 3; coord: [0, 0]>', part.inspect)
+    border = part.border
+
+    assert_equal(12, border.length)
+    assert_equal(
+      [
+        [-1, -1], [-1, 0], [-1, 1], [0, -1], [0, 1], [1, -1],
+        [1, 1], [2, -1], [2, 1], [3, -1], [3, 0], [3, 1]
+      ],
+      border
+    )
+  end
+
   def test_part1
     @gr.setup(INPUT)
 

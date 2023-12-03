@@ -44,6 +44,7 @@ module AOC2023
       input.each_line(chomp: true).with_index do |line, y|
         line.each_char.with_index do |char, x|
           if char == '.'
+            part_number&.finish
             part_number = nil
             next
           end
@@ -51,6 +52,7 @@ module AOC2023
           if SYMBOLS.include?(char)
             symbols[char] ||= []
             symbols[char] << [x, y]
+            part_number&.finish
             part_number = nil
             next
           end
@@ -68,13 +70,18 @@ module AOC2023
     end
 
     class PartNumber
-      attr_reader :value
+      attr_reader :value, :border
 
       def initialize(value, x, y)
         @value = value
         @length = 1
         @x = x
         @y = y
+        @border = nil
+      end
+
+      def inspect
+        "<value: #{@value}; length: #{@length}; coord: [#{@x}, #{@y}]>"
       end
 
       def add_value(value)
@@ -82,16 +89,20 @@ module AOC2023
         @length += 1
       end
 
-      def border
+      def finish
+        @border = calculate_border
+      end
+
+      private
+
+      def calculate_border
+        centre = (@x...(@x + @length)).map { |x| [x, @y] }
+
         ((@x - 1)..(@x + @length)).flat_map do |x|
           ((@y - 1)..(@y + 1)).map do |y|
             [x, y]
           end
-        end
-      end
-
-      def inspect
-        "<value: #{@value}; length: #{@length}; coord: [#{@x}, #{@y}]>"
+        end - centre
       end
     end
   end
