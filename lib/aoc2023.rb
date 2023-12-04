@@ -18,7 +18,8 @@ module AOC2023
     nil, # There is no day zero!
     'trebuchet',
     'cube_conundrum',
-    'gear_ratios'
+    'gear_ratios',
+    'scratchcards'
   ].freeze
 
   def self.class_from_day(day)
