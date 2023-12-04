@@ -36,4 +36,10 @@ class AOC2023::ScratchcardsTest < Minitest::Test
 
     assert_equal(13, @ss.part1)
   end
+
+  def test_part2
+    @ss.setup(INPUT)
+
+    assert_equal(30, @ss.part2)
+  end
 end

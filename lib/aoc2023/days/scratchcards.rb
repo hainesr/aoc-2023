@@ -18,6 +18,18 @@ module AOC2023
       @scores.sum { |score| score.positive? ? 2**(score - 1) : 0 }
     end
 
+    def part2
+      tallys = Array.new(@scores.length, 1)
+
+      @scores.each_with_index do |score, i|
+        score.times do |j|
+          tallys[i + j + 1] += tallys[i]
+        end
+      end
+
+      tallys.sum
+    end
+
     def read_and_score_cards(input)
       cards = input.each_line(chomp: true).map do |line|
         _, numbers = line.split(':')
