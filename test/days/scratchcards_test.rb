@@ -23,24 +23,11 @@ class AOC2023::ScratchcardsTest < Minitest::Test
     @ss = AOC2023::Scratchcards.new
   end
 
-  def test_read_cards
-    games = @ss.read_cards(INPUT)
+  def test_read_and_score_cards
+    scores = @ss.read_and_score_cards(INPUT)
 
-    assert_equal(
-      [[41, 48, 83, 86, 17], [83, 86, 6, 31, 17, 9, 48, 53]],
-      games[0]
-    )
-    assert_equal(
-      [[31, 18, 13, 56, 72], [74, 77, 10, 23, 35, 67, 36, 11]],
-      games[5]
-    )
-  end
-
-  def test_score_game
-    games = @ss.read_cards(INPUT)
-
-    [8, 2, 2, 1, 0, 0].each_with_index do |score, i|
-      assert_equal(score, @ss.score_game(games[i]))
+    [4, 2, 2, 1, 0, 0].each_with_index do |score, i|
+      assert_equal(score, scores[i])
     end
   end
 
