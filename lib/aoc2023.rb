@@ -20,7 +20,7 @@ module AOC2023
     'cube_conundrum',
     'gear_ratios',
     'scratchcards',
-    nil,
+    'seed_fertilizer',
     'wait_for_it'
   ].freeze
 
