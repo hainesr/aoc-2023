@@ -18,12 +18,17 @@ module AOC2023
     def setup(input = INPUT.chomp)
       lines = input.split("\n")
       @races = parse_line(lines[0]).zip(parse_line(lines[1]))
+      @race = parse_race(lines)
     end
 
     def part1
       @races.reduce(1) do |acc, (time, distance)|
         error_margin(time, distance) * acc
       end
+    end
+
+    def part2
+      error_margin(@race[0], @race[1])
     end
 
     def error_margin(time, distance)
@@ -38,6 +43,13 @@ module AOC2023
     def parse_line(line)
       _, numbers = line.split(':')
       numbers.split.map(&:to_i)
+    end
+
+    def parse_race(lines)
+      lines.map do |line|
+        _, numbers = line.split(':')
+        numbers.delete(' ').to_i
+      end
     end
   end
 end

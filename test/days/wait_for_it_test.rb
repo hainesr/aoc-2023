@@ -30,4 +30,10 @@ class AOC2023::WaitForItTest < Minitest::Test
 
     assert_equal(288, @wfi.part1)
   end
+
+  def test_part2
+    @wfi.setup(INPUT)
+
+    assert_equal(71_503, @wfi.part2)
+  end
 end
