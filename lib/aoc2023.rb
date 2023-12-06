@@ -19,7 +19,9 @@ module AOC2023
     'trebuchet',
     'cube_conundrum',
     'gear_ratios',
-    'scratchcards'
+    'scratchcards',
+    nil,
+    'wait_for_it'
   ].freeze
 
   def self.class_from_day(day)
