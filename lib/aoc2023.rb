@@ -21,7 +21,8 @@ module AOC2023
     'gear_ratios',
     'scratchcards',
     'seed_fertilizer',
-    'wait_for_it'
+    'wait_for_it',
+    'camel_cards'
   ].freeze
 
   def self.class_from_day(day)
