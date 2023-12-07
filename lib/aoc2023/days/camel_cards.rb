@@ -10,62 +10,31 @@ require 'aoc2023'
 
 module AOC2023
   class CamelCards < Day
+    CARD_MAP = %w[2 3 4 5 6 7 8 9 T J Q K A].each_with_index.to_h.freeze
+
     def setup(input = read_input_file.chomp)
       @hands = read_hands(input)
     end
 
     def part1
-      @hands.sort.map.with_index do |hand, i|
-        hand.bid * (i + 1)
-      end.sum
+      sorted = @hands.sort_by { |_, h, _| [sort_helper(h), h] }
+
+      sorted.each.with_index(1).sum { |(_, _, b), i| b * i }
     end
 
+    def sort_helper(hand)
+      card_groups = hand.tally
+      card_group_frequencies = card_groups.values.sort
+
+      card_group_frequencies.reverse
+    end
+
+    # Returns a list of ['hand', [values], bid]
+    #             e.g.: ['QQQJA', [10, 10, 10, 9, 12], 483]
     def read_hands(input)
-      input.lines(chomp: true).map do |line|
-        Hand.new(*line.split)
-      end
-    end
-
-    class Hand
-      include Comparable
-
-      attr_reader :bid
-
-      PICTURE_CARD_MAP = {
-        'T' => 10, 'J' => 11, 'Q' => 12, 'K' => 13, 'A' => 14
-      }.freeze
-
-      def initialize(hand, bid = 0)
-        @hand = normalise(hand.chars)
-        @groups = @hand.group_by { _1 }
-        @bid = bid.to_i
-      end
-
-      def <=>(other)
-        cmp = @groups.size <=> other.groups.size
-        return -cmp unless cmp.zero?
-
-        cmp = @groups.values.max_by(&:size).size <=> other.groups.values.max_by(&:size).size
-        return cmp unless cmp.zero?
-
-        @hand.each_with_index do |h, i|
-          cmp = h <=> other.hand[i]
-          return cmp unless cmp.zero?
-        end
-
-        0
-      end
-
-      protected
-
-      attr_reader :groups, :hand
-
-      private
-
-      def normalise(hand)
-        hand.map do |card|
-          PICTURE_CARD_MAP[card] || card.to_i
-        end
+      input.each_line(chomp: true).map do |line|
+        cards, bid = line.split
+        [cards.freeze, cards.chars.map { |c| CARD_MAP[c] }.freeze, bid.to_i].freeze
       end
     end
   end

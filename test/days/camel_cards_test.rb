@@ -22,31 +22,11 @@ class AOC2023::CamelCardsTest < Minitest::Test
     @cc = AOC2023::CamelCards.new
   end
 
-  def test_hands
+  def test_read_hands
     hands = @cc.read_hands(INPUT)
 
-    assert_equal(765, hands[0].bid)
-  end
-
-  def test_hands_sorting
-    hands = ['AAAAA', 'KKKKK', 'T55J5', 'QQQJA'].map do |hand|
-      AOC2023::CamelCards::Hand.new(hand)
-    end
-
-    assert_equal(hands[0], hands[0])
-    assert_operator(hands[0], :>, hands[1])
-    assert_operator(hands[2], :<, hands[3])
-  end
-
-  def test_hands_sort
-    hands = @cc.read_hands(INPUT)
-    sorted = hands.sort
-
-    assert_equal(hands[0], sorted[0])
-    assert_equal(hands[3], sorted[1])
-    assert_equal(hands[2], sorted[2])
-    assert_equal(hands[1], sorted[3])
-    assert_equal(hands[4], sorted[4])
+    assert_equal(['32T3K', [1, 0, 8, 1, 11], 765], hands[0])
+    assert_equal(['QQQJA', [10, 10, 10, 9, 12], 483], hands[4])
   end
 
   def test_part1
