@@ -34,4 +34,10 @@ class AOC2023::CamelCardsTest < Minitest::Test
 
     assert_equal(6440, @cc.part1)
   end
+
+  def test_part2
+    @cc.setup(INPUT)
+
+    assert_equal(5905, @cc.part2)
+  end
 end

@@ -22,9 +22,29 @@ module AOC2023
       sorted.each.with_index(1).sum { |(_, _, b), i| b * i }
     end
 
-    def sort_helper(hand)
+    def part2(joker = CARD_MAP['J'])
+      sorted = @hands.sort_by do |_, h, _|
+        hand_no_jokers = h.reject { |c| c == joker }
+        num_jokers = h.count(joker)
+        hand_rescored_jokers = h.map { |c| c == joker ? -1 : c }
+
+        [sort_helper(hand_no_jokers, num_jokers), hand_rescored_jokers]
+      end
+
+      sorted.each.with_index(1).sum { |(_, _, b), i| b * i }
+    end
+
+    def sort_helper(hand, num_jokers = 0)
       card_groups = hand.tally
       card_group_frequencies = card_groups.values.sort
+
+      # Jokers should be used as duplicates of the most frequent card,
+      # but handle the case of a hand of all jokers first.
+      if num_jokers == 5
+        card_group_frequencies = [5]
+      else
+        card_group_frequencies[-1] += num_jokers
+      end
 
       card_group_frequencies.reverse
     end
