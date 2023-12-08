@@ -22,6 +22,19 @@ class AOC2023::HauntedWastelandTest < Minitest::Test
     ZZZ = (ZZZ, ZZZ)
   EOI
 
+  INPUT2 = <<~EOI
+    LR
+
+    KKA = (KKB, XXX)
+    KKB = (XXX, KKZ)
+    KKZ = (KKB, XXX)
+    LLA = (LLB, XXX)
+    LLB = (LLC, LLC)
+    LLC = (LLZ, LLZ)
+    LLZ = (LLB, LLB)
+    XXX = (XXX, XXX)
+  EOI
+
   def setup
     @hw = AOC2023::HauntedWasteland.new
   end
@@ -30,5 +43,11 @@ class AOC2023::HauntedWastelandTest < Minitest::Test
     @hw.setup(INPUT)
 
     assert_equal(2, @hw.part1)
+  end
+
+  def test_part2
+    @hw.setup(INPUT2)
+
+    assert_equal(6, @hw.part2)
   end
 end

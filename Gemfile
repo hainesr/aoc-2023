@@ -9,6 +9,7 @@
 source 'https://rubygems.org'
 
 gem 'minitest', '~> 5.20'
+gem 'prime', '~> 0.1.2'
 gem 'rake', '~> 13.1'
 gem 'rubocop', '~> 1.58'
 gem 'rubocop-minitest', '~> 0.33.0'
