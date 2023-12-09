@@ -21,26 +21,35 @@ class AOC2023::MirageMaintenanceTest < Minitest::Test
   end
 
   def test_diffs
-    lists = @mm.setup(INPUT)
-    first = @mm.diffs(lists[0])
+    list = [0, 3, 6, 9, 12, 15]
+    first = @mm.diffs(list)
 
     assert_equal([3, 3, 3, 3, 3], first)
     assert_equal([0, 0, 0, 0], @mm.diffs(first))
   end
 
+  def test_all_diffs
+    list = [0, 3, 6, 9, 12, 15]
+
+    assert_equal(
+      [[0, 3, 6, 9, 12, 15], [3, 3, 3, 3, 3], [0, 0, 0, 0]],
+      @mm.all_diffs(list)
+    )
+  end
+
   def test_next_value
-    lists = @mm.setup(INPUT)
+    diffs = @mm.setup(INPUT)
 
     [18, 28, 68].each_with_index do |result, i|
-      assert_equal(result, @mm.next_value(lists[i]))
+      assert_equal(result, @mm.next_value(diffs[i]))
     end
   end
 
   def test_prev_value
-    lists = @mm.setup(INPUT)
+    diffs = @mm.setup(INPUT)
 
     [-3, 0, 5].each_with_index do |result, i|
-      assert_equal(result, @mm.prev_value(lists[i]))
+      assert_equal(result, @mm.prev_value(diffs[i]))
     end
   end
 
