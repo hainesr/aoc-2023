@@ -36,9 +36,23 @@ class AOC2023::MirageMaintenanceTest < Minitest::Test
     end
   end
 
+  def test_prev_value
+    lists = @mm.setup(INPUT)
+
+    [-3, 0, 5].each_with_index do |result, i|
+      assert_equal(result, @mm.prev_value(lists[i]))
+    end
+  end
+
   def test_part1
     @mm.setup(INPUT)
 
     assert_equal(114, @mm.part1)
+  end
+
+  def test_part2
+    @mm.setup(INPUT)
+
+    assert_equal(2, @mm.part2)
   end
 end
