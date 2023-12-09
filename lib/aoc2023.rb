@@ -23,7 +23,8 @@ module AOC2023
     'seed_fertilizer',
     'wait_for_it',
     'camel_cards',
-    'haunted_wasteland'
+    'haunted_wasteland',
+    'mirage_maintenance'
   ].freeze
 
   def self.class_from_day(day)
