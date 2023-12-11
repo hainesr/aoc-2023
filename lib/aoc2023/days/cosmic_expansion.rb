@@ -20,12 +20,18 @@ module AOC2023
       end
     end
 
-    def manhattan_distance((x1, y1), (x2, y2), empty_rows, empty_columns)
+    def part2(factor: 1_000_000)
+      @galaxies.combination(2).sum do |g1, g2|
+        manhattan_distance(g1, g2, @empty_rows, @empty_columns, factor:)
+      end
+    end
+
+    def manhattan_distance((x1, y1), (x2, y2), empty_rows, empty_columns, factor: 2)
       x_range = (x1 <= x2 ? x1...x2 : x2...x1)
       y_range = (y1 <= y2 ? y1...y2 : y2...y1)
 
-      add_x = empty_columns.count { |x| x_range.include?(x) }
-      add_y = empty_rows.count { |y| y_range.include?(y) }
+      add_x = empty_columns.count { |x| x_range.include?(x) } * (factor - 1)
+      add_y = empty_rows.count { |y| y_range.include?(y) } * (factor - 1)
 
       x_range.size + y_range.size + add_x + add_y
     end

@@ -51,4 +51,11 @@ class AOC2023::CosmicExpansionTest < Minitest::Test
 
     assert_equal(374, @ce.part1)
   end
+
+  def test_part2
+    @ce.setup(INPUT)
+
+    assert_equal(1030, @ce.part2(factor: 10))
+    assert_equal(8410, @ce.part2(factor: 100))
+  end
 end
