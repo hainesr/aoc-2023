@@ -24,7 +24,9 @@ module AOC2023
     'wait_for_it',
     'camel_cards',
     'haunted_wasteland',
-    'mirage_maintenance'
+    'mirage_maintenance',
+    nil,
+    'cosmic_expansion'
   ].freeze
 
   def self.class_from_day(day)
