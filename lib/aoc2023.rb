@@ -25,7 +25,7 @@ module AOC2023
     'camel_cards',
     'haunted_wasteland',
     'mirage_maintenance',
-    nil,
+    'pipe_maze',
     'cosmic_expansion'
   ].freeze
 
