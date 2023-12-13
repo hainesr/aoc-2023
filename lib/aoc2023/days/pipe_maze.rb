@@ -18,6 +18,26 @@ module AOC2023
       navigate(@pipes, @width, @start, @start_dir).size / 2
     end
 
+    def part2
+      pipe = navigate(@pipes, @width, @start, @start_dir)
+      inside = []
+
+      edge = '|F7'.chars.to_h { |c| [c, true] }.freeze
+      @pipes.chars.each_slice(@width).with_index do |row, y|
+        out = true
+        row.each_with_index do |c, x|
+          pos = (y * @width) + x
+          if pipe.include?(pos)
+            out ^= edge[c]
+          else
+            inside << pos unless out
+          end
+        end
+      end
+
+      inside.size
+    end
+
     def navigate(pipes, width, start, start_dir)
       directions = {
         '|' => { -width => -width, width => width },
