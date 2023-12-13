@@ -26,7 +26,9 @@ module AOC2023
     'haunted_wasteland',
     'mirage_maintenance',
     'pipe_maze',
-    'cosmic_expansion'
+    'cosmic_expansion',
+    nil,
+    'point_of_incidence'
   ].freeze
 
   def self.class_from_day(day)
