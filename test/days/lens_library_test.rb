@@ -24,9 +24,26 @@ class AOC2023::LensLibraryTest < Minitest::Test
     end
   end
 
+  def test_parse_intruction
+    results = [
+      ['rn', '1'], ['cm', nil], ['qp', '3'], ['cm', '2'], ['qp', nil],
+      ['pc', '4'], ['ot', '9'], ['ab', '5'], ['pc', nil], ['pc', '6'], ['ot', '7']
+    ]
+
+    INPUT.split(',').zip(results).each do |instr, result|
+      assert_equal(result, @ll.parse_instruction(instr))
+    end
+  end
+
   def test_part1
     @ll.setup(INPUT)
 
     assert_equal(1320, @ll.part1)
+  end
+
+  def test_part2
+    @ll.setup(INPUT)
+
+    assert_equal(145, @ll.part2)
   end
 end
