@@ -23,9 +23,10 @@ task :run do
     day = day.chomp.to_i
     next if day.negative? || day > 25
 
-    puts "Advent of Code 2023 day #{day}"
     system "./aoc-2023 #{day}"
+    puts
   end
+
   exit
 end
 
