@@ -56,4 +56,10 @@ class AOC2023::PointOfIncidenceTest < Minitest::Test
 
     assert_equal(405, @poi.part1)
   end
+
+  def test_part2
+    @poi.setup(INPUT)
+
+    assert_equal(400, @poi.part2)
+  end
 end
