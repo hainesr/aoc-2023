@@ -28,7 +28,9 @@ module AOC2023
     'pipe_maze',
     'cosmic_expansion',
     nil,
-    'point_of_incidence'
+    'point_of_incidence',
+    nil,
+    'lens_library'
   ].freeze
 
   def self.class_from_day(day)
