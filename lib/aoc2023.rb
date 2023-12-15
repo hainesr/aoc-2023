@@ -15,22 +15,22 @@ module AOC2023
   INPUT_DIR = ::File.expand_path('../etc', __dir__)
 
   DAY_MAP = [
-    nil, # There is no day zero!
-    'trebuchet',
+    'there_is_no_day_zero',
+    'trebuchet',                  # Day 1.
     'cube_conundrum',
     'gear_ratios',
     'scratchcards',
-    'seed_fertilizer',
+    'seed_fertilizer',            # Day 5.
     'wait_for_it',
     'camel_cards',
     'haunted_wasteland',
     'mirage_maintenance',
-    'pipe_maze',
+    'pipe_maze',                  # Day 10.
     'cosmic_expansion',
     nil,
     'point_of_incidence',
     nil,
-    'lens_library'
+    'lens_library'                # Day 15.
   ].freeze
 
   def self.class_from_day(day)

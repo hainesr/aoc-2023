@@ -17,7 +17,7 @@ module AOC2023
         return false if argv.empty?
 
         argv.map(&:to_i).each do |day|
-          return false if day < 1 || day > 25
+          return false if day.negative? || day > 25
         end
       end
 

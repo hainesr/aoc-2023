@@ -21,7 +21,7 @@ desc 'Run code for a day, or days, of advent of code'
 task :run do
   ARGV[1..].each do |day|
     day = day.chomp.to_i
-    next if day < 1 || day > 25
+    next if day.negative? || day > 25
 
     puts "Advent of Code 2023 day #{day}"
     system "./aoc-2023 #{day}"
