@@ -34,7 +34,7 @@ module AOC2023
     nil,
     nil,
     'lavaduct_lagoon',
-    nil,
+    'aplenty',
     'pulse_propagation'           # Day 20.
   ].freeze
 
