@@ -30,7 +30,10 @@ module AOC2023
     nil,
     'point_of_incidence',
     nil,
-    'lens_library'                # Day 15.
+    'lens_library',               # Day 15.
+    nil,
+    nil,
+    'lavaduct_lagoon'
   ].freeze
 
   def self.class_from_day(day)
