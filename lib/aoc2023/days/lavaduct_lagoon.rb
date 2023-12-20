@@ -11,11 +11,15 @@ require 'aoc2023'
 module AOC2023
   class LavaductLagoon < Day
     def setup(input = read_input_file.chomp)
-      @x_list, @y_list, @steps = read_instructions(input)
+      @x_list, @y_list, @steps, @x_list2, @y_list2, @steps2 = read_instructions(input)
     end
 
     def part1
       area(@x_list, @y_list, @steps)
+    end
+
+    def part2
+      area(@x_list2, @y_list2, @steps2)
     end
 
     def area(xs, ys, steps)
@@ -34,9 +38,11 @@ module AOC2023
     def read_instructions(input)
       x = 0
       y = 0
+      x2 = 0
+      y2 = 0
 
       input.each_line(chomp: true).map do |line|
-        dir, len, = line.split
+        dir, len, colour = line.split
         steps = len.to_i
 
         case dir
@@ -46,7 +52,15 @@ module AOC2023
         when 'D' then y += steps
         end
 
-        [x, y, steps]
+        steps2 = colour[2, 5].to_i(16)
+        case colour[-2].to_i
+        when 0 then x2 += steps2
+        when 1 then y2 += steps2
+        when 2 then x2 -= steps2
+        when 3 then y2 -= steps2
+        end
+
+        [x, y, steps, x2, y2, steps2]
       end.transpose # Return lists of x, y and steps.
     end
   end
