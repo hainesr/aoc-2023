@@ -33,7 +33,9 @@ module AOC2023
     'lens_library',               # Day 15.
     nil,
     nil,
-    'lavaduct_lagoon'
+    'lavaduct_lagoon',
+    nil,
+    'pulse_propagation'           # Day 20.
   ].freeze
 
   def self.class_from_day(day)
