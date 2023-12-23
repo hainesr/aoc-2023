@@ -56,4 +56,10 @@ class AOC2023::AplentyTest < Minitest::Test
 
     assert_equal(19_114, @aa.part1)
   end
+
+  def test_part2
+    @aa.setup(INPUT)
+
+    assert_equal(167_409_079_868_000, @aa.part2)
+  end
 end

@@ -24,6 +24,10 @@ module AOC2023
       end
     end
 
+    def part2
+      calculate_ranges([1..4000, 1..4000, 1..4000, 1..4000], @workflows)
+    end
+
     def run_workflow(part, workflows, workflow = :in)
       workflows[workflow].each do |(cat, op, num, dest)|
         if op.nil?
@@ -35,6 +39,26 @@ module AOC2023
         next unless part[cat].method(op).call(num)
 
         return END_STATES.include?(dest) ? dest : run_workflow(part, workflows, dest)
+      end
+    end
+
+    def calculate_ranges(ranges, workflows, workflow = :in)
+      return 0 if workflow == :R
+      return ranges.map(&:size).reduce(1, :*) if workflow == :A
+
+      workflows[workflow].sum do |(cat, op, num, dest)|
+        next calculate_ranges(ranges, workflows, cat) if op.nil?
+
+        new_ranges = ranges.dup
+        if op == :<
+          new_ranges[cat] = new_ranges[cat].begin..(num - 1)
+          ranges[cat] = num..ranges[cat].end
+        else
+          new_ranges[cat] = (num + 1)..new_ranges[cat].end
+          ranges[cat] = ranges[cat].begin..num
+        end
+
+        calculate_ranges(new_ranges, workflows, dest)
       end
     end
 
